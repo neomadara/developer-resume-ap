@@ -7,7 +7,7 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
-describe('Resume Module', () => {
+describe('Get Resume by email', () => {
   it('Should have an email in their query params', async () => {
     const res = await request(app).get("/resume/instanciageek")
 

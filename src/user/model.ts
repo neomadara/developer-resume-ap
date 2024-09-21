@@ -1,4 +1,5 @@
-import * as mongoose from "mongoose";
+import * as mongoose from 'mongoose';
+import User from './types';
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
@@ -7,4 +8,4 @@ const userSchema = new mongoose.Schema({
   enable: { type: Boolean, default: false }
 });
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model<User>('User', userSchema);

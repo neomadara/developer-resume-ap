@@ -15,18 +15,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^6.7.0",
     "vercel": "^19.1.2",
     "winston": "^3.7.2",
     "zod": "^3.19.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^29.2.0",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^17.0.33",
     "@types/supertest": "^2.0.12",
     "concurrently": "^7.2.0",

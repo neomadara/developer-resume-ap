@@ -1,23 +1,23 @@
-import express, {Express, NextFunction, Response, Request, ErrorRequestHandler} from "express";
+import express, {Express, NextFunction, Response, Request} from "express";
 import healthRoute from './src/health/router.health'
 import resumeRoute from './src/resume/router'
+import userRoute from './src/user/router'
 import * as mongoose from "mongoose";
 import Logger from "./src/utils/logger";
-import * as dotenv from 'dotenv'
 import cors from "cors"
 import resError from "./src/utils/resError";
+import config from "./config";
 
-dotenv.config()
+const MONGODB_URI = config.MONGODB_URI;
+const PORT = config.PORT;
 
 const app: Express = express()
-const port = process.env.PORT || 3000
-const MONGODB_URI = process.env.MONGODB_URI || ''
-
 
 app.use(express.json());
 app.use(cors());
 app.use(healthRoute);
 app.use(resumeRoute)
+app.use(userRoute)
 
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   resError(res, err.statusCode, err.message);
@@ -38,7 +38,7 @@ export const startServer = async () => {
     await connectToMongo();
   }
 
-  app.listen(port, () => Logger.info(`Server started on port ${port}`));
+  app.listen(PORT, () => Logger.info(`Server started on port ${PORT}`));
 };
 
 export default app
